@@ -7,10 +7,14 @@ namespace PVDataProcessor.Tool
 {
     class Processing
     {
-        public double CalcIntegratedWatts(PH[] PHdata, )
+        public double CalcIntegratedWatts(PH[] PHdata, int interval)
         {
-            
-            return 0.0;
+            double result=0.0;
+            for (int i = 0; i < PHdata.Length; i++)
+            {
+                result += (interval / 3600) * PHdata[i].Watts;
+            }
+            return result;
         }
     }
 }
