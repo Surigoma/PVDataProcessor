@@ -50,40 +50,43 @@ namespace PVDataProcessor.Tool
                     }
                     for (int ii = 0; ii < buff.LongLength; ii++)
                     {
-                        string[] c = ListPath[ii].Split(' ');
-                        int PH = 0, PPA = 0, B = 0;
-                        if (c.LongLength > 1)
+                        if (buff[ii] != "")
                         {
-                            if (c[1].IndexOf("PH") == -1)
-                                B = 1;
-                            PH = int.Parse(c[1 + B].Substring(2, 1)) - 1;
-                            PPA = int.Parse(c[2 + B].Substring(3, 1)) - 1;
+                            string[] c = ListPath[ii].Split(' ');
+                            int PH = 0, PPA = 0, B = 0;
+                            if (c.LongLength > 1)
+                            {
+                                if (c[1].IndexOf("PH") == -1)
+                                    B = 1;
+                                PH = int.Parse(c[1 + B].Substring(2, 1)) - 1;
+                                PPA = int.Parse(c[2 + B].Substring(3, 1)) - 1;
+                            }
+                            switch (c[0])
+                            {
+                                case "Time":
+                                    sd.SamplingDate = DateTime.ParseExact(SelectDate.ToString(@"yyyy/MM/dd") + " " + buff[ii], @"yyyy/MM/dd HH:mm:ss.FFF", null);
+                                    break;
+                                case "Watts":
+                                    sd.Data[PPA].PHData[PH].Watts = double.Parse(buff[ii]);
+                                    break;
+                                case "DC":
+                                    if (c[1] == "Voltage")
+                                        sd.Data[PPA].PHData[PH].Voltage = double.Parse(buff[ii]);
+                                    else if (c[1] == "Current")
+                                        sd.Data[PPA].PHData[PH].Current = double.Parse(buff[ii]);
+                                    break;
+                                case "Integrated":
+                                    sd.Data[PPA].PHData[PH].IntegratedWatts = double.Parse(buff[ii]);
+                                    break;
+                                default:
+                                    break;
+                            }
+                            if (sd.SamplingDate.Hour - h < 0)
+                            {
+                                SelectDate.AddDays(1);
+                            }
+                            h = sd.SamplingDate.Hour;
                         }
-                        switch (c[0])
-                        {
-                            case "Time":
-                                sd.SamplingDate = DateTime.ParseExact(SelectDate.ToString(@"yyyy/MM/dd") + " " + buff[ii], @"yyyy/MM/dd HH:mm:ss.FFF", null);
-                                break;
-                            case "Watts":
-                                sd.Data[PPA].PHData[PH].Watts = double.Parse(buff[ii]);
-                                break;
-                            case "DC":
-                                if (c[1] == "Voltage")
-                                    sd.Data[PPA].PHData[PH].Voltage = double.Parse(buff[ii]);
-                                else if (c[1] == "Current")
-                                    sd.Data[PPA].PHData[PH].Current = double.Parse(buff[ii]);
-                                break;
-                            case "Integrated":
-                                sd.Data[PPA].PHData[PH].IntegratedWatts = double.Parse(buff[ii]);
-                                break;
-                            default:
-                                break;
-                        }
-                        if (sd.SamplingDate.Hour - h < 0)
-                        {
-                            SelectDate.AddDays(1);
-                        }
-                        h = sd.SamplingDate.Hour;
                     }
                     Datas.Add(sd);
                 }
