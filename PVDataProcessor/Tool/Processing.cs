@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 namespace PVDataProcessor.Tool
 {
@@ -16,5 +17,30 @@ namespace PVDataProcessor.Tool
             }
             return result;
         }
+
+        public void CutPerDay(List<SampleData> datas, string prefix, string filepath)
+        {
+            String filename;
+            
+            datas.Sort(CompareByDate);
+            foreach (SampleData sd in datas)
+            {
+                filename = filepath+prefix.Replace("%d",sd.SamplingDate.ToShortDateString())+".csv";
+                StreamWriter sw = new StreamWriter(filepath, true, System.Text.Encoding.GetEncoding("utf8"));
+                sw.WriteLine("#");
+                sw.WriteLine("Time,Watts PH1 PPA1,DC Voltage PH1 PPA1,DC Current PH1 PPA1,Integrated Watts PH1 PPA1,Watts PH2 PPA1,DC Voltage PH2 PPA1,DC Current PH2 PPA1,Watts PH3 PPA1,DC Voltage PH3 PPA1,DC Current PH3 PPA1,Watts PH1 PPA2,DC Voltage PH1 PPA2,DC Current PH1 PPA2,Integrated Watts PH1 PPA2,Watts PH2 PPA2,DC Voltage PH2 PPA2,DC Current PH2 PPA2,Watts PH3 PPA2,DC Voltage PH3 PPA2,DC Current PH3 PPA2,Watts PH1 PPA3,DC Voltage PH1 PPA3,DC Current PH1 PPA3,Integrated Watts PH1 PPA3,Watts PH2 PPA3,DC Voltage PH2 PPA3,DC Current PH2 PPA3,Watts PH3 PPA3,DC Voltage PH3 PPA3,DC Current PH3 PPA3");
+                /*
+                 * ここにめんどくさいコードが入ります
+                */
+                sw.Close();
+            }
+
+        }
+
+        public int CompareByDate(SampleData a, SampleData b)
+        {
+            return DateTime.Compare(a.SamplingDate, b.SamplingDate);
+        }
+
     }
 }
