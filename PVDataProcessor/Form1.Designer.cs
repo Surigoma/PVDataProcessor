@@ -30,6 +30,9 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.A_S_OutputDirectory = new System.Windows.Forms.CheckBox();
+            this.A_S_ProcessingDirectory = new System.Windows.Forms.CheckBox();
             this.A_Calculation = new System.Windows.Forms.GroupBox();
             this.A_C_OutputDirectoryOpen = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
@@ -38,6 +41,8 @@
             this.label16 = new System.Windows.Forms.Label();
             this.A_C_DirectoryPath = new System.Windows.Forms.TextBox();
             this.A_ValidCutter = new System.Windows.Forms.GroupBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.A_V_Threshold = new System.Windows.Forms.TextBox();
             this.A_V_OverWrite = new System.Windows.Forms.CheckBox();
             this.A_V_OutputDirectoryOpen = new System.Windows.Forms.Button();
             this.A_V_DirectoryOpen = new System.Windows.Forms.Button();
@@ -80,8 +85,10 @@
             this.V_OverWrite = new System.Windows.Forms.CheckBox();
             this.V_OutputDirectoryPath = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.V_DirectoryOpen = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
+            this.V_Threshold = new System.Windows.Forms.TextBox();
             this.V_DirectoryPath = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -93,15 +100,9 @@
             this.label12 = new System.Windows.Forms.Label();
             this.C_DirectoryPath = new System.Windows.Forms.TextBox();
             this.Process = new System.Windows.Forms.Button();
-            this.label17 = new System.Windows.Forms.Label();
-            this.V_Threshold = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.A_S_ProcessingDirectory = new System.Windows.Forms.CheckBox();
-            this.A_S_OutputDirectory = new System.Windows.Forms.CheckBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.A_V_Threshold = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.A_Calculation.SuspendLayout();
             this.A_ValidCutter.SuspendLayout();
             this.A_FileCutter.SuspendLayout();
@@ -115,7 +116,6 @@
             this.tabPage4.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -147,6 +147,41 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "AutoProcessing";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.A_S_OutputDirectory);
+            this.groupBox1.Controls.Add(this.A_S_ProcessingDirectory);
+            this.groupBox1.Location = new System.Drawing.Point(150, 6);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(456, 84);
+            this.groupBox1.TabIndex = 20;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Sync";
+            // 
+            // A_S_OutputDirectory
+            // 
+            this.A_S_OutputDirectory.AutoSize = true;
+            this.A_S_OutputDirectory.Location = new System.Drawing.Point(6, 40);
+            this.A_S_OutputDirectory.Name = "A_S_OutputDirectory";
+            this.A_S_OutputDirectory.Size = new System.Drawing.Size(136, 16);
+            this.A_S_OutputDirectory.TabIndex = 18;
+            this.A_S_OutputDirectory.Text = "Output Directory Path";
+            this.A_S_OutputDirectory.UseVisualStyleBackColor = true;
+            this.A_S_OutputDirectory.CheckedChanged += new System.EventHandler(this.A_S_OutputDirectory_CheckedChanged);
+            // 
+            // A_S_ProcessingDirectory
+            // 
+            this.A_S_ProcessingDirectory.AutoSize = true;
+            this.A_S_ProcessingDirectory.Location = new System.Drawing.Point(6, 18);
+            this.A_S_ProcessingDirectory.Name = "A_S_ProcessingDirectory";
+            this.A_S_ProcessingDirectory.Size = new System.Drawing.Size(158, 16);
+            this.A_S_ProcessingDirectory.TabIndex = 18;
+            this.A_S_ProcessingDirectory.Text = "Processing Directory Path";
+            this.A_S_ProcessingDirectory.UseVisualStyleBackColor = true;
+            this.A_S_ProcessingDirectory.CheckedChanged += new System.EventHandler(this.A_S_ProcessingDirectory_CheckedChanged);
             // 
             // A_Calculation
             // 
@@ -240,6 +275,25 @@
             this.A_ValidCutter.TabIndex = 18;
             this.A_ValidCutter.TabStop = false;
             this.A_ValidCutter.Text = "ValidCutter";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 50);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(55, 12);
+            this.label18.TabIndex = 20;
+            this.label18.Text = "Threshold";
+            // 
+            // A_V_Threshold
+            // 
+            this.A_V_Threshold.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.A_V_Threshold.Location = new System.Drawing.Point(101, 47);
+            this.A_V_Threshold.Name = "A_V_Threshold";
+            this.A_V_Threshold.Size = new System.Drawing.Size(493, 19);
+            this.A_V_Threshold.TabIndex = 19;
+            this.A_V_Threshold.TextChanged += new System.EventHandler(this.A_V_Threshold_TextChanged);
             // 
             // A_V_OverWrite
             // 
@@ -651,7 +705,7 @@
             this.V_OutputDirecrotyOpen.TabIndex = 10;
             this.V_OutputDirecrotyOpen.Text = "Save";
             this.V_OutputDirecrotyOpen.UseVisualStyleBackColor = true;
-            this.V_OutputDirecrotyOpen.Click += new System.EventHandler(this.A_F_OutputDirectoryOpen_Click);
+            this.V_OutputDirecrotyOpen.Click += new System.EventHandler(this.V_OutputDirectoryOpen_Click);
             // 
             // label9
             // 
@@ -681,7 +735,7 @@
             this.V_OutputDirectoryPath.Name = "V_OutputDirectoryPath";
             this.V_OutputDirectoryPath.Size = new System.Drawing.Size(450, 19);
             this.V_OutputDirectoryPath.TabIndex = 7;
-            this.V_OutputDirectoryPath.TextChanged += new System.EventHandler(this.A_V_OutputDirectoryPath_TextChanged);
+            this.V_OutputDirectoryPath.TextChanged += new System.EventHandler(this.V_OutputDirectoryPath_TextChanged);
             // 
             // groupBox8
             // 
@@ -696,6 +750,15 @@
             this.groupBox8.TabIndex = 12;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Input";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 48);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(55, 12);
+            this.label17.TabIndex = 11;
+            this.label17.Text = "Threshold";
             // 
             // V_DirectoryOpen
             // 
@@ -716,6 +779,16 @@
             this.label10.Size = new System.Drawing.Size(75, 12);
             this.label10.TabIndex = 9;
             this.label10.Text = "DirectoryPath";
+            // 
+            // V_Threshold
+            // 
+            this.V_Threshold.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.V_Threshold.Location = new System.Drawing.Point(87, 45);
+            this.V_Threshold.Name = "V_Threshold";
+            this.V_Threshold.Size = new System.Drawing.Size(507, 19);
+            this.V_Threshold.TabIndex = 7;
+            this.V_Threshold.TextChanged += new System.EventHandler(this.V_Threshold_TextChanged);
             // 
             // V_DirectoryPath
             // 
@@ -835,79 +908,6 @@
             this.Process.UseVisualStyleBackColor = true;
             this.Process.Click += new System.EventHandler(this.Process_Click);
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 48);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(55, 12);
-            this.label17.TabIndex = 11;
-            this.label17.Text = "Threshold";
-            // 
-            // V_Threshold
-            // 
-            this.V_Threshold.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.V_Threshold.Location = new System.Drawing.Point(87, 45);
-            this.V_Threshold.Name = "V_Threshold";
-            this.V_Threshold.Size = new System.Drawing.Size(507, 19);
-            this.V_Threshold.TabIndex = 7;
-            this.V_Threshold.TextChanged += new System.EventHandler(this.V_Threshold_TextChanged);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.A_S_OutputDirectory);
-            this.groupBox1.Controls.Add(this.A_S_ProcessingDirectory);
-            this.groupBox1.Location = new System.Drawing.Point(150, 6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(456, 84);
-            this.groupBox1.TabIndex = 20;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Sync";
-            // 
-            // A_S_ProcessingDirectory
-            // 
-            this.A_S_ProcessingDirectory.AutoSize = true;
-            this.A_S_ProcessingDirectory.Location = new System.Drawing.Point(6, 18);
-            this.A_S_ProcessingDirectory.Name = "A_S_ProcessingDirectory";
-            this.A_S_ProcessingDirectory.Size = new System.Drawing.Size(158, 16);
-            this.A_S_ProcessingDirectory.TabIndex = 18;
-            this.A_S_ProcessingDirectory.Text = "Processing Directory Path";
-            this.A_S_ProcessingDirectory.UseVisualStyleBackColor = true;
-            this.A_S_ProcessingDirectory.CheckedChanged += new System.EventHandler(this.A_S_ProcessingDirectory_CheckedChanged);
-            // 
-            // A_S_OutputDirectory
-            // 
-            this.A_S_OutputDirectory.AutoSize = true;
-            this.A_S_OutputDirectory.Location = new System.Drawing.Point(6, 40);
-            this.A_S_OutputDirectory.Name = "A_S_OutputDirectory";
-            this.A_S_OutputDirectory.Size = new System.Drawing.Size(136, 16);
-            this.A_S_OutputDirectory.TabIndex = 18;
-            this.A_S_OutputDirectory.Text = "Output Directory Path";
-            this.A_S_OutputDirectory.UseVisualStyleBackColor = true;
-            this.A_S_OutputDirectory.CheckedChanged += new System.EventHandler(this.A_S_OutputDirectory_CheckedChanged);
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(6, 50);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(55, 12);
-            this.label18.TabIndex = 20;
-            this.label18.Text = "Threshold";
-            // 
-            // A_V_Threshold
-            // 
-            this.A_V_Threshold.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.A_V_Threshold.Location = new System.Drawing.Point(101, 47);
-            this.A_V_Threshold.Name = "A_V_Threshold";
-            this.A_V_Threshold.Size = new System.Drawing.Size(493, 19);
-            this.A_V_Threshold.TabIndex = 19;
-            this.A_V_Threshold.TextChanged += new System.EventHandler(this.A_V_Threshold_TextChanged);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -920,6 +920,8 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.A_Calculation.ResumeLayout(false);
             this.A_Calculation.PerformLayout();
             this.A_ValidCutter.ResumeLayout(false);
@@ -943,8 +945,6 @@
             this.groupBox7.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }

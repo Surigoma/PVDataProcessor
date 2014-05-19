@@ -13,9 +13,6 @@ namespace PVDataProcessor
 {
     public partial class Form1 : Form
     {
-
-        DB db = new DB();
-
         public Form1()
         {
             InitializeComponent();
@@ -229,6 +226,21 @@ namespace PVDataProcessor
             if (V_OverWrite.Checked)
                 V_OutputDirectoryPath.Text = V_DirectoryPath.Text;
         }
+        private void V_OutputDirectoryOpen_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.Description = "Select output directory";
+            fbd.RootFolder = Environment.SpecialFolder.Desktop;
+            fbd.ShowNewFolderButton = true;
+            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                V_OutputDirectoryPath.Text = fbd.SelectedPath;
+            }
+        }
+        private void V_OutputDirectoryPath_TextChanged(object sender, EventArgs e)
+        {
+            A_V_OutputDirectoryPath.Text = V_OutputDirectoryPath.Text;
+        }
 
         private void C_DirectoryPath_TextChanged(object sender, EventArgs e)
         {
@@ -266,12 +278,19 @@ namespace PVDataProcessor
             switch (tabControl1.SelectedIndex)
             {
                 case 1:
-                    db.Load(F_StartDate.Value, F_CSVFilePath.Text);
-                    Processing.CutPerDay(db.Datas, F_FileNamePattern.Text, F_OutputDirectroyPath.Text);
+                    {
+                        DB db = new DB();
+                        db.Load(F_StartDate.Value, F_CSVFilePath.Text);
+                        Processing.CutPerDay(db.Datas, F_FileNamePattern.Text, F_OutputDirectroyPath.Text);
+                    }
+                    break;
+                case 2:
+                    Processing.ValidDataIndex(V_DirectoryPath.Text, V_OutputDirectoryPath.Text, int.Parse(V_Threshold.Text));
                     break;
                 default:
                     break;
             }
         }
+
     }
 }
