@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+using PVDataProcessor.Tool;
+
 namespace PVDataProcessor
 {
     public partial class Form1 : Form
@@ -14,6 +16,12 @@ namespace PVDataProcessor
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            DB db = new DB();
+            db.Load(DateTime.Now, "test.csv");
         }
     }
 }
