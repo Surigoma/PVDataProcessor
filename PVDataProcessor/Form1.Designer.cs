@@ -34,15 +34,13 @@
             this.A_S_OutputDirectory = new System.Windows.Forms.CheckBox();
             this.A_S_ProcessingDirectory = new System.Windows.Forms.CheckBox();
             this.A_Calculation = new System.Windows.Forms.GroupBox();
-            this.A_C_OutputDirectoryOpen = new System.Windows.Forms.Button();
+            this.A_C_OutputOpen = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
-            this.A_C_OutputDirectoryPath = new System.Windows.Forms.TextBox();
+            this.A_C_OutputPath = new System.Windows.Forms.TextBox();
             this.A_C_DirectoryOpen = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.A_C_DirectoryPath = new System.Windows.Forms.TextBox();
             this.A_ValidCutter = new System.Windows.Forms.GroupBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.A_V_Threshold = new System.Windows.Forms.TextBox();
             this.A_V_OverWrite = new System.Windows.Forms.CheckBox();
             this.A_V_OutputDirectoryOpen = new System.Windows.Forms.Button();
             this.A_V_DirectoryOpen = new System.Windows.Forms.Button();
@@ -85,21 +83,21 @@
             this.V_OverWrite = new System.Windows.Forms.CheckBox();
             this.V_OutputDirectoryPath = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.label17 = new System.Windows.Forms.Label();
             this.V_DirectoryOpen = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
-            this.V_Threshold = new System.Windows.Forms.TextBox();
             this.V_DirectoryPath = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.C_OutputDirectoryOpen = new System.Windows.Forms.Button();
+            this.C_OutputOpen = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.C_OutputDirectoryPath = new System.Windows.Forms.TextBox();
+            this.C_OutputPath = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.C_DirectoryOpen = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.C_DirectoryPath = new System.Windows.Forms.TextBox();
             this.Process = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
+            this.V_Threshold = new System.Windows.Forms.NumericUpDown();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -116,6 +114,7 @@
             this.tabPage4.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.V_Threshold)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -130,7 +129,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(620, 472);
+            this.tabControl1.Size = new System.Drawing.Size(620, 436);
             this.tabControl1.TabIndex = 3;
             // 
             // tabPage1
@@ -143,7 +142,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(612, 446);
+            this.tabPage1.Size = new System.Drawing.Size(612, 410);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "AutoProcessing";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -185,29 +184,29 @@
             // 
             // A_Calculation
             // 
-            this.A_Calculation.Controls.Add(this.A_C_OutputDirectoryOpen);
+            this.A_Calculation.Controls.Add(this.A_C_OutputOpen);
             this.A_Calculation.Controls.Add(this.label15);
-            this.A_Calculation.Controls.Add(this.A_C_OutputDirectoryPath);
+            this.A_Calculation.Controls.Add(this.A_C_OutputPath);
             this.A_Calculation.Controls.Add(this.A_C_DirectoryOpen);
             this.A_Calculation.Controls.Add(this.label16);
             this.A_Calculation.Controls.Add(this.A_C_DirectoryPath);
             this.A_Calculation.Enabled = false;
-            this.A_Calculation.Location = new System.Drawing.Point(6, 357);
+            this.A_Calculation.Location = new System.Drawing.Point(6, 321);
             this.A_Calculation.Name = "A_Calculation";
             this.A_Calculation.Size = new System.Drawing.Size(600, 80);
             this.A_Calculation.TabIndex = 19;
             this.A_Calculation.TabStop = false;
             this.A_Calculation.Text = "Calculation";
             // 
-            // A_C_OutputDirectoryOpen
+            // A_C_OutputOpen
             // 
-            this.A_C_OutputDirectoryOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.A_C_OutputDirectoryOpen.Location = new System.Drawing.Point(552, 47);
-            this.A_C_OutputDirectoryOpen.Name = "A_C_OutputDirectoryOpen";
-            this.A_C_OutputDirectoryOpen.Size = new System.Drawing.Size(42, 23);
-            this.A_C_OutputDirectoryOpen.TabIndex = 22;
-            this.A_C_OutputDirectoryOpen.Text = "Save";
-            this.A_C_OutputDirectoryOpen.UseVisualStyleBackColor = true;
+            this.A_C_OutputOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.A_C_OutputOpen.Location = new System.Drawing.Point(552, 47);
+            this.A_C_OutputOpen.Name = "A_C_OutputOpen";
+            this.A_C_OutputOpen.Size = new System.Drawing.Size(42, 23);
+            this.A_C_OutputOpen.TabIndex = 22;
+            this.A_C_OutputOpen.Text = "Save";
+            this.A_C_OutputOpen.UseVisualStyleBackColor = true;
             // 
             // label15
             // 
@@ -218,14 +217,15 @@
             this.label15.TabIndex = 20;
             this.label15.Text = "DirectoryPath";
             // 
-            // A_C_OutputDirectoryPath
+            // A_C_OutputPath
             // 
-            this.A_C_OutputDirectoryPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.A_C_OutputPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.A_C_OutputDirectoryPath.Location = new System.Drawing.Point(98, 49);
-            this.A_C_OutputDirectoryPath.Name = "A_C_OutputDirectoryPath";
-            this.A_C_OutputDirectoryPath.Size = new System.Drawing.Size(448, 19);
-            this.A_C_OutputDirectoryPath.TabIndex = 18;
+            this.A_C_OutputPath.Location = new System.Drawing.Point(98, 49);
+            this.A_C_OutputPath.Name = "A_C_OutputPath";
+            this.A_C_OutputPath.Size = new System.Drawing.Size(448, 19);
+            this.A_C_OutputPath.TabIndex = 18;
+            this.A_C_OutputPath.TextChanged += new System.EventHandler(this.A_C_OutputPath_TextChanged);
             // 
             // A_C_DirectoryOpen
             // 
@@ -242,9 +242,9 @@
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(6, 52);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(86, 12);
+            this.label16.Size = new System.Drawing.Size(39, 12);
             this.label16.TabIndex = 19;
-            this.label16.Text = "OutputDirectory";
+            this.label16.Text = "Output";
             // 
             // A_C_DirectoryPath
             // 
@@ -259,8 +259,6 @@
             // 
             this.A_ValidCutter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.A_ValidCutter.Controls.Add(this.label18);
-            this.A_ValidCutter.Controls.Add(this.A_V_Threshold);
             this.A_ValidCutter.Controls.Add(this.A_V_OverWrite);
             this.A_ValidCutter.Controls.Add(this.A_V_OutputDirectoryOpen);
             this.A_ValidCutter.Controls.Add(this.A_V_DirectoryOpen);
@@ -271,34 +269,15 @@
             this.A_ValidCutter.Enabled = false;
             this.A_ValidCutter.Location = new System.Drawing.Point(6, 225);
             this.A_ValidCutter.Name = "A_ValidCutter";
-            this.A_ValidCutter.Size = new System.Drawing.Size(600, 126);
+            this.A_ValidCutter.Size = new System.Drawing.Size(600, 90);
             this.A_ValidCutter.TabIndex = 18;
             this.A_ValidCutter.TabStop = false;
             this.A_ValidCutter.Text = "ValidCutter";
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(6, 50);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(55, 12);
-            this.label18.TabIndex = 20;
-            this.label18.Text = "Threshold";
-            // 
-            // A_V_Threshold
-            // 
-            this.A_V_Threshold.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.A_V_Threshold.Location = new System.Drawing.Point(101, 47);
-            this.A_V_Threshold.Name = "A_V_Threshold";
-            this.A_V_Threshold.Size = new System.Drawing.Size(493, 19);
-            this.A_V_Threshold.TabIndex = 19;
-            this.A_V_Threshold.TextChanged += new System.EventHandler(this.A_V_Threshold_TextChanged);
-            // 
             // A_V_OverWrite
             // 
             this.A_V_OverWrite.AutoSize = true;
-            this.A_V_OverWrite.Location = new System.Drawing.Point(8, 74);
+            this.A_V_OverWrite.Location = new System.Drawing.Point(8, 42);
             this.A_V_OverWrite.Name = "A_V_OverWrite";
             this.A_V_OverWrite.Size = new System.Drawing.Size(74, 16);
             this.A_V_OverWrite.TabIndex = 18;
@@ -309,7 +288,7 @@
             // A_V_OutputDirectoryOpen
             // 
             this.A_V_OutputDirectoryOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.A_V_OutputDirectoryOpen.Location = new System.Drawing.Point(552, 94);
+            this.A_V_OutputDirectoryOpen.Location = new System.Drawing.Point(552, 62);
             this.A_V_OutputDirectoryOpen.Name = "A_V_OutputDirectoryOpen";
             this.A_V_OutputDirectoryOpen.Size = new System.Drawing.Size(42, 23);
             this.A_V_OutputDirectoryOpen.TabIndex = 16;
@@ -332,7 +311,7 @@
             // 
             this.A_V_OutputDirectoryPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.A_V_OutputDirectoryPath.Location = new System.Drawing.Point(101, 96);
+            this.A_V_OutputDirectoryPath.Location = new System.Drawing.Point(101, 64);
             this.A_V_OutputDirectoryPath.Name = "A_V_OutputDirectoryPath";
             this.A_V_OutputDirectoryPath.Size = new System.Drawing.Size(445, 19);
             this.A_V_OutputDirectoryPath.TabIndex = 12;
@@ -341,7 +320,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(6, 99);
+            this.label13.Location = new System.Drawing.Point(6, 67);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(86, 12);
             this.label13.TabIndex = 14;
@@ -678,7 +657,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(612, 446);
+            this.tabPage3.Size = new System.Drawing.Size(612, 410);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "ValidCutter";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -689,7 +668,7 @@
             this.groupBox9.Controls.Add(this.label9);
             this.groupBox9.Controls.Add(this.V_OverWrite);
             this.groupBox9.Controls.Add(this.V_OutputDirectoryPath);
-            this.groupBox9.Location = new System.Drawing.Point(6, 89);
+            this.groupBox9.Location = new System.Drawing.Point(6, 107);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(600, 71);
             this.groupBox9.TabIndex = 13;
@@ -739,26 +718,17 @@
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.label17);
-            this.groupBox8.Controls.Add(this.V_DirectoryOpen);
-            this.groupBox8.Controls.Add(this.label10);
             this.groupBox8.Controls.Add(this.V_Threshold);
+            this.groupBox8.Controls.Add(this.V_DirectoryOpen);
+            this.groupBox8.Controls.Add(this.label17);
+            this.groupBox8.Controls.Add(this.label10);
             this.groupBox8.Controls.Add(this.V_DirectoryPath);
             this.groupBox8.Location = new System.Drawing.Point(6, 6);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(600, 77);
+            this.groupBox8.Size = new System.Drawing.Size(600, 95);
             this.groupBox8.TabIndex = 12;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Input";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 48);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(55, 12);
-            this.label17.TabIndex = 11;
-            this.label17.Text = "Threshold";
             // 
             // V_DirectoryOpen
             // 
@@ -780,16 +750,6 @@
             this.label10.TabIndex = 9;
             this.label10.Text = "DirectoryPath";
             // 
-            // V_Threshold
-            // 
-            this.V_Threshold.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.V_Threshold.Location = new System.Drawing.Point(87, 45);
-            this.V_Threshold.Name = "V_Threshold";
-            this.V_Threshold.Size = new System.Drawing.Size(507, 19);
-            this.V_Threshold.TabIndex = 7;
-            this.V_Threshold.TextChanged += new System.EventHandler(this.V_Threshold_TextChanged);
-            // 
             // V_DirectoryPath
             // 
             this.V_DirectoryPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -807,16 +767,16 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(612, 446);
+            this.tabPage4.Size = new System.Drawing.Size(612, 410);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Calculation";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.C_OutputDirectoryOpen);
+            this.groupBox7.Controls.Add(this.C_OutputOpen);
             this.groupBox7.Controls.Add(this.label11);
-            this.groupBox7.Controls.Add(this.C_OutputDirectoryPath);
+            this.groupBox7.Controls.Add(this.C_OutputPath);
             this.groupBox7.Location = new System.Drawing.Point(6, 65);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(600, 49);
@@ -824,35 +784,35 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Output";
             // 
-            // C_OutputDirectoryOpen
+            // C_OutputOpen
             // 
-            this.C_OutputDirectoryOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.C_OutputDirectoryOpen.Location = new System.Drawing.Point(552, 18);
-            this.C_OutputDirectoryOpen.Name = "C_OutputDirectoryOpen";
-            this.C_OutputDirectoryOpen.Size = new System.Drawing.Size(42, 23);
-            this.C_OutputDirectoryOpen.TabIndex = 15;
-            this.C_OutputDirectoryOpen.Text = "Save";
-            this.C_OutputDirectoryOpen.UseVisualStyleBackColor = true;
-            this.C_OutputDirectoryOpen.Click += new System.EventHandler(this.C_OutputDirectoryOpen_Click);
+            this.C_OutputOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.C_OutputOpen.Location = new System.Drawing.Point(552, 18);
+            this.C_OutputOpen.Name = "C_OutputOpen";
+            this.C_OutputOpen.Size = new System.Drawing.Size(42, 23);
+            this.C_OutputOpen.TabIndex = 15;
+            this.C_OutputOpen.Text = "Save";
+            this.C_OutputOpen.UseVisualStyleBackColor = true;
+            this.C_OutputOpen.Click += new System.EventHandler(this.C_OutputDirectoryOpen_Click);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(6, 23);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(86, 12);
+            this.label11.Size = new System.Drawing.Size(39, 12);
             this.label11.TabIndex = 13;
-            this.label11.Text = "OutputDirectory";
+            this.label11.Text = "Output";
             // 
-            // C_OutputDirectoryPath
+            // C_OutputPath
             // 
-            this.C_OutputDirectoryPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.C_OutputPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.C_OutputDirectoryPath.Location = new System.Drawing.Point(98, 20);
-            this.C_OutputDirectoryPath.Name = "C_OutputDirectoryPath";
-            this.C_OutputDirectoryPath.Size = new System.Drawing.Size(448, 19);
-            this.C_OutputDirectoryPath.TabIndex = 11;
-            this.C_OutputDirectoryPath.TextChanged += new System.EventHandler(this.C_OutputDirectoryPath_TextChanged);
+            this.C_OutputPath.Location = new System.Drawing.Point(87, 20);
+            this.C_OutputPath.Name = "C_OutputPath";
+            this.C_OutputPath.Size = new System.Drawing.Size(459, 19);
+            this.C_OutputPath.TabIndex = 11;
+            this.C_OutputPath.TextChanged += new System.EventHandler(this.C_OutputDirectoryPath_TextChanged);
             // 
             // groupBox6
             // 
@@ -900,7 +860,7 @@
             // 
             this.Process.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.Process.Location = new System.Drawing.Point(12, 490);
+            this.Process.Location = new System.Drawing.Point(12, 454);
             this.Process.Name = "Process";
             this.Process.Size = new System.Drawing.Size(620, 23);
             this.Process.TabIndex = 4;
@@ -908,11 +868,43 @@
             this.Process.UseVisualStyleBackColor = true;
             this.Process.Click += new System.EventHandler(this.Process_Click);
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 49);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(55, 12);
+            this.label17.TabIndex = 9;
+            this.label17.Text = "Threshold";
+            // 
+            // V_Threshold
+            // 
+            this.V_Threshold.DecimalPlaces = 3;
+            this.V_Threshold.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            196608});
+            this.V_Threshold.Location = new System.Drawing.Point(87, 47);
+            this.V_Threshold.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.V_Threshold.Name = "V_Threshold";
+            this.V_Threshold.Size = new System.Drawing.Size(507, 19);
+            this.V_Threshold.TabIndex = 11;
+            this.V_Threshold.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(644, 525);
+            this.ClientSize = new System.Drawing.Size(644, 489);
             this.Controls.Add(this.Process);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
@@ -945,6 +937,7 @@
             this.groupBox7.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.V_Threshold)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -989,9 +982,9 @@
         private System.Windows.Forms.TextBox V_OutputDirectoryPath;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox A_FileCutter;
-        private System.Windows.Forms.Button C_OutputDirectoryOpen;
+        private System.Windows.Forms.Button C_OutputOpen;
         private System.Windows.Forms.Button C_DirectoryOpen;
-        private System.Windows.Forms.TextBox C_OutputDirectoryPath;
+        private System.Windows.Forms.TextBox C_OutputPath;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox C_DirectoryPath;
         private System.Windows.Forms.Label label12;
@@ -1010,19 +1003,17 @@
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.GroupBox A_Calculation;
-        private System.Windows.Forms.Button A_C_OutputDirectoryOpen;
+        private System.Windows.Forms.Button A_C_OutputOpen;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox A_C_OutputDirectoryPath;
+        private System.Windows.Forms.TextBox A_C_OutputPath;
         private System.Windows.Forms.Button A_C_DirectoryOpen;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox A_C_DirectoryPath;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox V_Threshold;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox A_S_OutputDirectory;
         private System.Windows.Forms.CheckBox A_S_ProcessingDirectory;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox A_V_Threshold;
+        private System.Windows.Forms.NumericUpDown V_Threshold;
+        private System.Windows.Forms.Label label17;
     }
 }
 

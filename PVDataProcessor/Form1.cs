@@ -101,12 +101,9 @@ namespace PVDataProcessor
         {
             A_V_OutputDirectoryPath.Enabled = !(A_S_OutputDirectory.Checked | A_V_OverWrite.Checked);
             A_V_OutputDirectoryOpen.Enabled = !(A_S_OutputDirectory.Checked | A_V_OverWrite.Checked);
-            A_C_OutputDirectoryPath.Enabled = !A_S_OutputDirectory.Checked;
-            A_C_OutputDirectoryOpen.Enabled = !A_S_OutputDirectory.Checked;
             if (A_S_OutputDirectory.Checked)
             {
                 A_V_OutputDirectoryPath.Text = A_F_OutputDirectoryPath.Text;
-                A_C_OutputDirectoryPath.Text = A_F_OutputDirectoryPath.Text;
             }
         }
 
@@ -151,10 +148,12 @@ namespace PVDataProcessor
                 A_V_OutputDirectoryPath.Text = fbd.SelectedPath;
             }
         }
-        private void A_V_Threshold_TextChanged(object sender, EventArgs e)
+
+        private void A_C_OutputPath_TextChanged(object sender, EventArgs e)
         {
-            A_V_Threshold.Text = V_Threshold.Text;
+            C_OutputPath.Text = A_C_OutputPath.Text;
         }
+
 
         private void F_StartDate_ValueChanged(object sender, EventArgs e)
         {
@@ -214,10 +213,6 @@ namespace PVDataProcessor
                 V_DirectoryPath.Text = fbd.SelectedPath;
             }
         }
-        private void V_Threshold_TextChanged(object sender, EventArgs e)
-        {
-            A_V_Threshold.Text = V_Threshold.Text;
-        }
         private void V_OverWrite_CheckedChanged(object sender, EventArgs e)
         {
             label9.Enabled = !V_OverWrite.Checked;
@@ -259,17 +254,20 @@ namespace PVDataProcessor
         }
         private void C_OutputDirectoryPath_TextChanged(object sender, EventArgs e)
         {
-            A_C_OutputDirectoryPath.Text = C_OutputDirectoryPath.Text;
+            A_C_OutputPath.Text = C_OutputPath.Text;
         }
         private void C_OutputDirectoryOpen_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            fbd.Description = "Select output directory";
-            fbd.RootFolder = Environment.SpecialFolder.Desktop;
-            fbd.ShowNewFolderButton = true;
-            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Title = "Save log file";
+            sfd.Filter = "Log File(*.csv;*.txt)|*.csv;*.txt|All File(*.*)|*.*";
+            sfd.FilterIndex = 0;
+            sfd.RestoreDirectory = true;
+            sfd.CheckFileExists = true;
+            sfd.CheckPathExists = true;
+            if (sfd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                C_OutputDirectoryPath.Text = fbd.SelectedPath;
+                C_DirectoryPath.Text = sfd.FileName;
             }
         }
 
@@ -285,7 +283,7 @@ namespace PVDataProcessor
                     }
                     break;
                 case 2:
-                    Processing.ValidDataIndex(V_DirectoryPath.Text, V_OutputDirectoryPath.Text, int.Parse(V_Threshold.Text));
+                    Processing.ValidDataIndex(V_DirectoryPath.Text, V_OutputDirectoryPath.Text, (double)V_Threshold.Value);
                     break;
                 default:
                     break;

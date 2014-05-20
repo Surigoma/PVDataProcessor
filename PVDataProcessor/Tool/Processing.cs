@@ -6,6 +6,9 @@ namespace PVDataProcessor.Tool
 {
     static class Processing
     {
+        static double nullData = -90000;
+        static public ProcessPrev pp;
+
         static public double CalcIntegratedWatts(PH[] PHdata, int interval)
         {
             double result = 0.0;
@@ -18,11 +21,22 @@ namespace PVDataProcessor.Tool
 
         static public void CutPerDay(List<SampleData> datas, string prefix, string filepath)
         {
+            bool flag = false;
+            if (pp == null)
+            {
+                flag = true;
+                pp = new ProcessPrev();
+                pp.Show();
+                pp.SetTitle("Valid data Cutting start.");
+            }
             if (filepath.Substring(filepath.Length - 1, 1) != @"\") { filepath += @"\"; }
             String filename;
             datas.Sort(CompareByDate);
             List<SampleData> DayData = new List<SampleData>();
             int Count = 0;
+            pp.SetMaxProgress(datas.Count);
+            if (flag)
+                pp.SetMaxAllProgress(datas.Count);
             while (datas.Count > Count + 1)
             {
                 DayData.Clear();
@@ -37,7 +51,19 @@ namespace PVDataProcessor.Tool
                 {
                     filename = filepath + prefix.Replace("%d", DayData[0].SamplingDate.ToString("yyyy-MM-dd")) + ".csv";
                     SaveSampleData(DayData, filename);
+                    pp.SetTitle("Day Cutting : " + DayData[0].SamplingDate.ToShortDateString());
+
                 }
+                pp.UpdateProgress(Count);
+                if (flag)
+                    pp.UpdateAllProgress(Count);
+            }
+            pp.SetTitle("Valid data Cutting inish.");
+            if (flag)
+            {
+                pp.Close();
+                pp.Dispose();
+                pp = null;
             }
         }
         static public void SaveSampleData(List<SampleData> datas, string filename)
@@ -68,41 +94,90 @@ namespace PVDataProcessor.Tool
         static public string GetInfo(PH ph)
         {
             String result;
-            result = String.Format("{0:e},{1:e},{2:e},{3:e}", ph.Watts, ph.Voltage, ph.Current, ph.IntegratedWatts);
+            result = "" + (ph.Watts == nullData ? "" : ph.Watts.ToString("e")) + "," + (ph.Voltage == nullData ? "" : ph.Voltage.ToString("e")) + "," + (ph.Current == nullData ? "" : ph.Current.ToString("e")) + "," + (ph.IntegratedWatts == nullData ? "" : ph.IntegratedWatts.ToString("e"));
+            //result = String.Format("{0:e},{1:e},{2:e},{3:e}", ph.Watts == nullData ? 0 : ph.Watts, ph.Voltage == nullData ? 0 : ph.Voltage, ph.Current == nullData ? 0 : ph.Current, ph.IntegratedWatts == nullData ? 0 : ph.IntegratedWatts);
             return result;
 
         }
 
-        static public void ValidDataIndex(string Source, string Output, int Threshold)
+        static public void ValidDataIndex(string Source, string Output, double Threshold)
         {
-            Threshold = Math.Abs(Threshold) * -1;
+            bool flag = false;
+            int lc = 0;
+            if (pp == null)
+            {
+                flag = true;
+                pp = new ProcessPrev();
+                pp.Show();
+                pp.SetTitle("Valid data Cutting start.");
+            }
             DB db = new DB();
             string[] files = Directory.GetFiles(Source);
             if (Output.Substring(Output.Length - 1, 1) != @"\") { Output += @"\"; }
+            pp.SetMaxProgress(files.Length);
+            if (flag)
+                pp.SetMaxAllProgress(files.Length);
             foreach (var f in files)
             {
+                int Max = 0;
                 db.LoadDay(f);
+                pp.SetTitle("File Load : " + f);
                 db.Datas.Sort(Processing.CompareByDate);
-                double[] result = new double[db.Datas.Count];
-                int Count = 0;
-                foreach (var i in db.Datas)
+                for (int PPAi = 0; PPAi < 3; PPAi++)
                 {
-                    result[Count] = i.Data[0].PHData[0].Watts;
-                    Count++;
-                }
-                result = MovingAverage(result, 100);
-                result = Differential(result);
-                result = Multiplication(result, 100);
-                result = MovingAverage(result, 100);
-                int ii = 0;
-                for (ii = 0; ii < db.Datas.Count; ii++)
-                    if (result[ii] < Threshold)
+                    for (int PHi = 0; PHi < 3; PHi++)
                     {
-                        ii -= 120;
-                        break;
+                        pp.SetTitle(Path.GetFileName(f) + " - PPA" + PPAi.ToString() + " PH" + PHi.ToString());
+                        double[] result = new double[db.Datas.Count];
+                        int Count = 0;
+                        foreach (var i in db.Datas)
+                        {
+                            result[Count] = i.Data[PPAi].PHData[PHi].Watts;
+                            Count++;
+                        }
+                        double m = 0, mm = 0;
+                        foreach (var i in result)
+                            m = (m < i ? i : m);
+                        result = MovingAverage(result, 100);
+                        result = Differential(result);
+                        result = Multiplication(result, 200);
+                        result = MovingAverage(result, 100);
+                        foreach (var i in result)
+                            mm = (mm > i ? i : mm);
+                        Console.WriteLine("" + m + " , " + mm + "," + mm / m);
+                        int mi = 0;
+                        for (int ii = 0; ii < db.Datas.Count; ii++)
+                            if (result[ii] < Math.Abs(m * (Threshold / 100)) * -1)
+                            {
+                                mi = ii - 100;
+                                break;
+                            }
+                        if (mi < 0) mi = 0;
+                        for (int i = mi; i < db.Datas.Count; i++)
+                        {
+                            db.Datas[i].Data[PPAi].PHData[PHi].Watts = nullData;
+                            db.Datas[i].Data[PPAi].PHData[PHi].Voltage = nullData;
+                            db.Datas[i].Data[PPAi].PHData[PHi].Current = nullData;
+                            db.Datas[i].Data[PPAi].PHData[PHi].IntegratedWatts = nullData;
+                        }
+                        if (mi > Max) { Max = mi; }
                     }
-                List<SampleData> savedata = db.Datas.GetRange(0, ii);
+                }
+                pp.SetTitle(Path.GetFileName(f) + " is Saving.");
+                List<SampleData> savedata = db.Datas.GetRange(0, Max);
                 SaveSampleData(savedata, Output + Path.GetFileName(f));
+                pp.SetTitle(Path.GetFileName(f) + " is Saved.");
+                lc++;
+                pp.UpdateProgress(lc);
+                if (flag)
+                    pp.UpdateAllProgress(lc);
+            }
+            pp.SetTitle("Valid data Cutting inish.");
+            if (flag)
+            {
+                pp.Close();
+                pp.Dispose();
+                pp = null;
             }
             return;
         }
