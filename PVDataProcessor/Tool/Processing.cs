@@ -9,18 +9,22 @@ namespace PVDataProcessor.Tool
         static double nullData = -90000;
         static public ProcessPrev pp;
 
-        static public double CalcIntegratedWatts(PH[] PHdata, int interval)
+        public static double CalcIntegratedWatts(List<PH> PHdata, int interval)
         {
             double result = 0.0;
-            for (int i = 0; i < PHdata.Length; i++)
+            foreach (PH data in PHdata)
             {
-                result += (interval / 3600) * PHdata[i].Watts;
+                result += (interval / 3600) * data.Watts;
             }
             return result;
         }
 
-        static public void CutPerDay(List<SampleData> datas, string prefix, string filepath)
+        public Dictionary<DateTime,DateLog> CutPerDay(List<SampleData> datas)
         {
+            Dictionary<DateTime, DateLog> result = new Dictionary<DateTime, DateLog>();
+            DateLog value = new DateLog();
+            DateTime key = new DateTime();
+
             bool flag = false;
             if (pp == null)
             {
@@ -29,8 +33,7 @@ namespace PVDataProcessor.Tool
                 pp.Show();
                 pp.SetTitle("Valid data Cutting start.");
             }
-            if (filepath.Substring(filepath.Length - 1, 1) != @"\") { filepath += @"\"; }
-            String filename;
+
             datas.Sort(CompareByDate);
             List<SampleData> DayData = new List<SampleData>();
             int Count = 0;
@@ -49,10 +52,10 @@ namespace PVDataProcessor.Tool
                 }
                 if (DayData.Count > 0)
                 {
-                    filename = filepath + prefix.Replace("%d", DayData[0].SamplingDate.ToString("yyyy-MM-dd")) + ".csv";
-                    SaveSampleData(DayData, filename);
                     pp.SetTitle("Day Cutting : " + DayData[0].SamplingDate.ToShortDateString());
-
+                    key = DayData[0].SamplingDate;
+                    value.datas = DayData;
+                    result.Add(key, value);
                 }
                 pp.UpdateProgress(Count);
                 if (flag)
@@ -65,8 +68,10 @@ namespace PVDataProcessor.Tool
                 pp.Dispose();
                 pp = null;
             }
+            return result;
         }
-        static public void SaveSampleData(List<SampleData> datas, string filename)
+
+        public void SaveSampleData(List<SampleData> datas, string filename)
         {
             StreamWriter sw = new StreamWriter(filename, false, System.Text.Encoding.UTF8);
             sw.WriteLine("#");
@@ -86,18 +91,17 @@ namespace PVDataProcessor.Tool
             }
             sw.Close();
         }
-        static public int CompareByDate(SampleData a, SampleData b)
+        public int CompareByDate(SampleData a, SampleData b)
         {
             return DateTime.Compare(a.SamplingDate, b.SamplingDate);
         }
 
-        static public string GetInfo(PH ph)
+        public string GetInfo(PH ph)
         {
             String result;
             result = "" + (ph.Watts == nullData ? "" : ph.Watts.ToString("e")) + "," + (ph.Voltage == nullData ? "" : ph.Voltage.ToString("e")) + "," + (ph.Current == nullData ? "" : ph.Current.ToString("e")) + "," + (ph.IntegratedWatts == nullData ? "" : ph.IntegratedWatts.ToString("e"));
             //result = String.Format("{0:e},{1:e},{2:e},{3:e}", ph.Watts == nullData ? 0 : ph.Watts, ph.Voltage == nullData ? 0 : ph.Voltage, ph.Current == nullData ? 0 : ph.Current, ph.IntegratedWatts == nullData ? 0 : ph.IntegratedWatts);
             return result;
-
         }
 
         static public void ValidDataIndex(string Source, string Output, double Threshold)
@@ -198,6 +202,7 @@ namespace PVDataProcessor.Tool
             foreach (var i in data) { result += i; }
             return result / data.LongLength;
         }
+
         static public double[] Differential(double[] data)
         {
             double[] result = new double[data.LongLength];
@@ -207,13 +212,15 @@ namespace PVDataProcessor.Tool
                 result[i] = data[i] - data[i - 1];
             }
             return result;
-        }
-        static public double[] Multiplication(double[] data, double x)
+        }               //微分
+
+        static public double[] Multiplication(double[] data, double x)      //乗
         {
             double[] result = new double[data.LongLength];
             for (int i = 0; i < data.Length; i++)
                 result[i] = data[i] * x;
             return result;
         }
+
     }
 }

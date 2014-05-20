@@ -8,6 +8,7 @@ namespace PVDataProcessor.Tool
     {
         public string Path = "";
         public List<SampleData> Datas = new List<SampleData>();
+
         public void Load(DateTime StartDate, string FilePath)
         {
             if (Path != FilePath)
@@ -75,9 +76,6 @@ namespace PVDataProcessor.Tool
                                         sd.Data[PPA].PHData[PH].Voltage = double.Parse(buff[ii]);
                                     else if (c[1] == "Current")
                                         sd.Data[PPA].PHData[PH].Current = double.Parse(buff[ii]);
-                                    break;
-                                case "Integrated":
-                                    sd.Data[PPA].PHData[PH].IntegratedWatts = double.Parse(buff[ii]);
                                     break;
                                 default:
                                     break;
@@ -160,9 +158,6 @@ namespace PVDataProcessor.Tool
                                         sd.Data[PPA].PHData[PH].Voltage = double.Parse(buff[ii]);
                                     else if (c[1] == "Current")
                                         sd.Data[PPA].PHData[PH].Current = double.Parse(buff[ii]);
-                                    break;
-                                case "Integrated":
-                                    sd.Data[PPA].PHData[PH].IntegratedWatts = double.Parse(buff[ii]);
                                     break;
                                 default:
                                     break;
