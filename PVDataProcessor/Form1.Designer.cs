@@ -83,7 +83,9 @@
             this.V_OverWrite = new System.Windows.Forms.CheckBox();
             this.V_OutputDirectoryPath = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.V_C_Threshold = new System.Windows.Forms.NumericUpDown();
             this.V_DirectoryOpen = new System.Windows.Forms.Button();
+            this.label17 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.V_DirectoryPath = new System.Windows.Forms.TextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
@@ -96,8 +98,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.C_DirectoryPath = new System.Windows.Forms.TextBox();
             this.Process = new System.Windows.Forms.Button();
-            this.label17 = new System.Windows.Forms.Label();
-            this.V_Threshold = new System.Windows.Forms.NumericUpDown();
+            this.label18 = new System.Windows.Forms.Label();
+            this.V_S_Threshold = new System.Windows.Forms.NumericUpDown();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -111,10 +113,11 @@
             this.tabPage3.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.V_C_Threshold)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.V_Threshold)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.V_S_Threshold)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -517,7 +520,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(612, 446);
+            this.tabPage2.Size = new System.Drawing.Size(612, 410);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "FileCutter";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -668,7 +671,7 @@
             this.groupBox9.Controls.Add(this.label9);
             this.groupBox9.Controls.Add(this.V_OverWrite);
             this.groupBox9.Controls.Add(this.V_OutputDirectoryPath);
-            this.groupBox9.Location = new System.Drawing.Point(6, 107);
+            this.groupBox9.Location = new System.Drawing.Point(6, 111);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(600, 71);
             this.groupBox9.TabIndex = 13;
@@ -718,17 +721,42 @@
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.V_Threshold);
+            this.groupBox8.Controls.Add(this.V_S_Threshold);
+            this.groupBox8.Controls.Add(this.V_C_Threshold);
+            this.groupBox8.Controls.Add(this.label18);
             this.groupBox8.Controls.Add(this.V_DirectoryOpen);
             this.groupBox8.Controls.Add(this.label17);
             this.groupBox8.Controls.Add(this.label10);
             this.groupBox8.Controls.Add(this.V_DirectoryPath);
             this.groupBox8.Location = new System.Drawing.Point(6, 6);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(600, 95);
+            this.groupBox8.Size = new System.Drawing.Size(600, 99);
             this.groupBox8.TabIndex = 12;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Input";
+            // 
+            // V_C_Threshold
+            // 
+            this.V_C_Threshold.DecimalPlaces = 3;
+            this.V_C_Threshold.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            196608});
+            this.V_C_Threshold.Location = new System.Drawing.Point(87, 47);
+            this.V_C_Threshold.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.V_C_Threshold.Name = "V_C_Threshold";
+            this.V_C_Threshold.Size = new System.Drawing.Size(507, 19);
+            this.V_C_Threshold.TabIndex = 11;
+            this.V_C_Threshold.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             // 
             // V_DirectoryOpen
             // 
@@ -740,6 +768,15 @@
             this.V_DirectoryOpen.Text = "Open";
             this.V_DirectoryOpen.UseVisualStyleBackColor = true;
             this.V_DirectoryOpen.Click += new System.EventHandler(this.V_DirectoryOpen_Click);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 49);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(77, 12);
+            this.label17.TabIndex = 9;
+            this.label17.Text = "Cut Threshold";
             // 
             // label10
             // 
@@ -868,34 +905,34 @@
             this.Process.UseVisualStyleBackColor = true;
             this.Process.Click += new System.EventHandler(this.Process_Click);
             // 
-            // label17
+            // label18
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(6, 49);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(55, 12);
-            this.label17.TabIndex = 9;
-            this.label17.Text = "Threshold";
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 74);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(78, 12);
+            this.label18.TabIndex = 9;
+            this.label18.Text = "Sun Threshold";
             // 
-            // V_Threshold
+            // V_S_Threshold
             // 
-            this.V_Threshold.DecimalPlaces = 3;
-            this.V_Threshold.Increment = new decimal(new int[] {
+            this.V_S_Threshold.DecimalPlaces = 3;
+            this.V_S_Threshold.Increment = new decimal(new int[] {
             1,
             0,
             0,
             196608});
-            this.V_Threshold.Location = new System.Drawing.Point(87, 47);
-            this.V_Threshold.Maximum = new decimal(new int[] {
+            this.V_S_Threshold.Location = new System.Drawing.Point(87, 72);
+            this.V_S_Threshold.Maximum = new decimal(new int[] {
             100000,
             0,
             0,
             0});
-            this.V_Threshold.Name = "V_Threshold";
-            this.V_Threshold.Size = new System.Drawing.Size(507, 19);
-            this.V_Threshold.TabIndex = 11;
-            this.V_Threshold.Value = new decimal(new int[] {
-            100,
+            this.V_S_Threshold.Name = "V_S_Threshold";
+            this.V_S_Threshold.Size = new System.Drawing.Size(507, 19);
+            this.V_S_Threshold.TabIndex = 11;
+            this.V_S_Threshold.Value = new decimal(new int[] {
+            30,
             0,
             0,
             0});
@@ -932,12 +969,13 @@
             this.groupBox9.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.V_C_Threshold)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.V_Threshold)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.V_S_Threshold)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1012,8 +1050,10 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox A_S_OutputDirectory;
         private System.Windows.Forms.CheckBox A_S_ProcessingDirectory;
-        private System.Windows.Forms.NumericUpDown V_Threshold;
+        private System.Windows.Forms.NumericUpDown V_C_Threshold;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.NumericUpDown V_S_Threshold;
+        private System.Windows.Forms.Label label18;
     }
 }
 

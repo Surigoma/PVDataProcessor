@@ -100,7 +100,7 @@ namespace PVDataProcessor.Tool
 
         }
 
-        static public void ValidDataIndex(string Source, string Output, double Threshold)
+        static public void ValidDataIndex(string Source, string Output, double CutThreshold, double SunThreshold)
         {
             bool flag = false;
             int lc = 0;
@@ -135,6 +135,7 @@ namespace PVDataProcessor.Tool
                             result[Count] = i.Data[PPAi].PHData[PHi].Watts;
                             Count++;
                         }
+                        bool r = CheckValidData(result, SunThreshold);
                         double m = 0, mm = 0;
                         foreach (var i in result)
                             m = (m < i ? i : m);
@@ -144,21 +145,29 @@ namespace PVDataProcessor.Tool
                         result = MovingAverage(result, 100);
                         foreach (var i in result)
                             mm = (mm > i ? i : mm);
-                        Console.WriteLine("" + m + " , " + mm + "," + mm / m);
+                        //Console.WriteLine("" + m + " , " + mm + "," + mm / m);
                         int mi = 0;
-                        for (int ii = 0; ii < db.Datas.Count; ii++)
-                            if (result[ii] < Math.Abs(m * (Threshold / 100)) * -1)
-                            {
-                                mi = ii - 100;
-                                break;
-                            }
-                        if (mi < 0) mi = 0;
-                        for (int i = mi; i < db.Datas.Count; i++)
+                        if (r)
                         {
-                            db.Datas[i].Data[PPAi].PHData[PHi].Watts = nullData;
-                            db.Datas[i].Data[PPAi].PHData[PHi].Voltage = nullData;
-                            db.Datas[i].Data[PPAi].PHData[PHi].Current = nullData;
-                            db.Datas[i].Data[PPAi].PHData[PHi].IntegratedWatts = nullData;
+                            for (int ii = 0; ii < db.Datas.Count; ii++)
+                                if (result[ii] < Math.Abs(m * (CutThreshold / 100)) * -1)
+                                {
+                                    mi = ii - 100;
+                                    break;
+                                }
+                            if (mi < 0) mi = 0;
+                            for (int i = mi; i < db.Datas.Count; i++)
+                            {
+                                db.Datas[i].Data[PPAi].PHData[PHi].Watts = nullData;
+                                db.Datas[i].Data[PPAi].PHData[PHi].Voltage = nullData;
+                                db.Datas[i].Data[PPAi].PHData[PHi].Current = nullData;
+                                db.Datas[i].Data[PPAi].PHData[PHi].IntegratedWatts = nullData;
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("DEBUG : PPA" + PPAi + " PH" + PHi + " Not Process.");
+                            mi = db.Datas.Count;
                         }
                         if (mi > Max) { Max = mi; }
                     }
@@ -172,7 +181,7 @@ namespace PVDataProcessor.Tool
                 if (flag)
                     pp.UpdateAllProgress(lc);
             }
-            pp.SetTitle("Valid data Cutting inish.");
+            pp.SetTitle("Valid data Cutting finish.");
             if (flag)
             {
                 pp.Close();
@@ -214,6 +223,25 @@ namespace PVDataProcessor.Tool
             for (int i = 0; i < data.Length; i++)
                 result[i] = data[i] * x;
             return result;
+        }
+
+        static public bool CheckValidData(double[] data, double Threshold)
+        {
+            long n = data.LongLength;
+            double avr = 0;
+            foreach (double i in data)
+            {
+                avr += i;
+            }
+            avr = avr / n;
+
+            double s = 0;
+            foreach (double i in data)
+            {
+                s += (i - avr) * (i - avr);
+            }
+            s = s / n;
+            return Math.Sqrt(s) >= Threshold;
         }
     }
 }

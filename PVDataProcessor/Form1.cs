@@ -283,7 +283,7 @@ namespace PVDataProcessor
                     }
                     break;
                 case 2:
-                    Processing.ValidDataIndex(V_DirectoryPath.Text, V_OutputDirectoryPath.Text, (double)V_Threshold.Value);
+                    Processing.ValidDataIndex(V_DirectoryPath.Text, V_OutputDirectoryPath.Text, (double)V_C_Threshold.Value, (double)V_S_Threshold.Value);
                     break;
                 default:
                     break;
