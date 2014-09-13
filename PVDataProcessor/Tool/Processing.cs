@@ -100,6 +100,61 @@ namespace PVDataProcessor.Tool
 
         }
 
+        static public void TimeCutter(string Source, string Output, TimeSpan CuttingTime)
+        {
+            bool flag = false;
+            int lc = 0;
+            if (pp == null)
+            {
+                flag = true;
+                pp = new ProcessPrev();
+                pp.Show();
+                pp.SetTitle("Valid data Cutting start.");
+            }
+            DB db = new DB();
+            string[] files = Directory.GetFiles(Source);
+            if (Output.Substring(Output.Length - 1, 1) != @"\") { Output += @"\"; }
+            pp.SetMaxProgress(files.Length);
+            if (flag)
+                pp.SetMaxAllProgress(files.Length);
+            foreach (var f in files)
+            {
+                db.LoadDay(f);
+                pp.SetTitle("File Load : " + f);
+                db.Datas.Sort(Processing.CompareByDate);
+                if (db.Datas.Count > 0)
+                {
+                    var b = db.Datas[0].SamplingDate;
+                    var dt = new DateTime(b.Year, b.Month, b.Day, CuttingTime.Hours, CuttingTime.Minutes, CuttingTime.Seconds);
+                    int i = db.Datas.FindIndex((x) => { return x.SamplingDate >= dt; });
+                    pp.SetTitle(Path.GetFileName(f) + " is Saving.");
+                    List<SampleData> savedata = db.Datas.GetRange(0, i);
+                    SaveSampleData(savedata, Output + Path.GetFileName(f));
+                    pp.SetTitle(Path.GetFileName(f) + " is Saved.");
+                    lc++;
+                    pp.UpdateProgress(lc);
+                    if (flag)
+                        pp.UpdateAllProgress(lc);
+                }
+                else
+                {
+                    pp.SetTitle(f + " isn't contains Data.");
+                    lc++;
+                    pp.UpdateProgress(lc);
+                    if (flag)
+                        pp.UpdateAllProgress(lc);
+                }
+            }
+            pp.SetTitle("Valid data Cutting finish.");
+            if (flag)
+            {
+                pp.Close();
+                pp.Dispose();
+                pp = null;
+            }
+            return;
+        }
+
         static public void ValidDataIndex(string Source, string Output, double CutThreshold, double SunThreshold)
         {
             bool flag = false;

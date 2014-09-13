@@ -116,7 +116,7 @@ namespace PVDataProcessor
         private void A_V_DirectoryOpen_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
-            fbd.Description = "Select output directory";
+            fbd.Description = "Select source directory";
             fbd.RootFolder = Environment.SpecialFolder.Desktop;
             fbd.ShowNewFolderButton = true;
             if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -205,7 +205,7 @@ namespace PVDataProcessor
         private void V_DirectoryOpen_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
-            fbd.Description = "Select output directory";
+            fbd.Description = "Select source directory";
             fbd.RootFolder = Environment.SpecialFolder.Desktop;
             fbd.ShowNewFolderButton = true;
             if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -244,7 +244,7 @@ namespace PVDataProcessor
         private void C_DirectoryOpen_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
-            fbd.Description = "Select output directory";
+            fbd.Description = "Select source directory";
             fbd.RootFolder = Environment.SpecialFolder.Desktop;
             fbd.ShowNewFolderButton = true;
             if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
@@ -285,8 +285,54 @@ namespace PVDataProcessor
                 case 2:
                     Processing.ValidDataIndex(V_DirectoryPath.Text, V_OutputDirectoryPath.Text, (double)V_C_Threshold.Value, (double)V_S_Threshold.Value);
                     break;
+                case 4:
+                    Processing.TimeCutter(T_InputDirectoryPath.Text, T_OutputDirectoryPath.Text, new TimeSpan((int)T_CuttingHour.Value, (int)T_CuttingMinutes.Value, (int)T_CuttingSecond.Value));
+                    break;
                 default:
                     break;
+            }
+        }
+
+        private void T_InputDirectoryPath_TextChanged(object sender, EventArgs e)
+        {
+            if (T_OverWrite.Checked)
+            {
+                T_OutputDirectoryPath.Text = T_InputDirectoryPath.Text;
+            }
+        }
+
+        private void T_OverWrite_CheckedChanged(object sender, EventArgs e)
+        {
+            T_OutputDirectoryPath.Enabled = !(T_OverWrite.Checked);
+            label19.Enabled = !(T_OverWrite.Checked);
+            T_OutputDirectorySave.Enabled = !(T_OverWrite.Checked);
+            if (T_OverWrite.Checked)
+            {
+                T_OutputDirectoryPath.Text = T_InputDirectoryPath.Text;
+            }
+        }
+
+        private void T_DirectoryOpen_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.Description = "Select source directory";
+            fbd.RootFolder = Environment.SpecialFolder.Desktop;
+            fbd.ShowNewFolderButton = true;
+            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                T_InputDirectoryPath.Text = fbd.SelectedPath;
+            }
+        }
+
+        private void T_OutputDirectorySave_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.Description = "Select output directory";
+            fbd.RootFolder = Environment.SpecialFolder.Desktop;
+            fbd.ShowNewFolderButton = true;
+            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                T_OutputDirectoryPath.Text = fbd.SelectedPath;
             }
         }
 

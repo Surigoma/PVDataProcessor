@@ -83,7 +83,9 @@
             this.V_OverWrite = new System.Windows.Forms.CheckBox();
             this.V_OutputDirectoryPath = new System.Windows.Forms.TextBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.V_S_Threshold = new System.Windows.Forms.NumericUpDown();
             this.V_C_Threshold = new System.Windows.Forms.NumericUpDown();
+            this.label18 = new System.Windows.Forms.Label();
             this.V_DirectoryOpen = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -98,8 +100,22 @@
             this.label12 = new System.Windows.Forms.Label();
             this.C_DirectoryPath = new System.Windows.Forms.TextBox();
             this.Process = new System.Windows.Forms.Button();
-            this.label18 = new System.Windows.Forms.Label();
-            this.V_S_Threshold = new System.Windows.Forms.NumericUpDown();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.T_DirectoryOpen = new System.Windows.Forms.Button();
+            this.label21 = new System.Windows.Forms.Label();
+            this.T_InputDirectoryPath = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.T_OutputDirectorySave = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.T_OverWrite = new System.Windows.Forms.CheckBox();
+            this.T_OutputDirectoryPath = new System.Windows.Forms.TextBox();
+            this.T_CuttingHour = new System.Windows.Forms.NumericUpDown();
+            this.T_CuttingMinutes = new System.Windows.Forms.NumericUpDown();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.T_CuttingSecond = new System.Windows.Forms.NumericUpDown();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -113,11 +129,17 @@
             this.tabPage3.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.V_S_Threshold)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.V_C_Threshold)).BeginInit();
             this.tabPage4.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.V_S_Threshold)).BeginInit();
+            this.tabPage5.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.T_CuttingHour)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.T_CuttingMinutes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.T_CuttingSecond)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -129,6 +151,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -735,6 +758,29 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Input";
             // 
+            // V_S_Threshold
+            // 
+            this.V_S_Threshold.DecimalPlaces = 3;
+            this.V_S_Threshold.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            196608});
+            this.V_S_Threshold.Location = new System.Drawing.Point(87, 72);
+            this.V_S_Threshold.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.V_S_Threshold.Name = "V_S_Threshold";
+            this.V_S_Threshold.Size = new System.Drawing.Size(507, 19);
+            this.V_S_Threshold.TabIndex = 11;
+            this.V_S_Threshold.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            // 
             // V_C_Threshold
             // 
             this.V_C_Threshold.DecimalPlaces = 3;
@@ -757,6 +803,15 @@
             0,
             0,
             0});
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 74);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(78, 12);
+            this.label18.TabIndex = 9;
+            this.label18.Text = "Sun Threshold";
             // 
             // V_DirectoryOpen
             // 
@@ -905,37 +960,184 @@
             this.Process.UseVisualStyleBackColor = true;
             this.Process.Click += new System.EventHandler(this.Process_Click);
             // 
-            // label18
+            // tabPage5
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(6, 74);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(78, 12);
-            this.label18.TabIndex = 9;
-            this.label18.Text = "Sun Threshold";
+            this.tabPage5.Controls.Add(this.groupBox3);
+            this.tabPage5.Controls.Add(this.groupBox2);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(612, 410);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "TimeCutter";
+            this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // V_S_Threshold
+            // groupBox2
             // 
-            this.V_S_Threshold.DecimalPlaces = 3;
-            this.V_S_Threshold.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            196608});
-            this.V_S_Threshold.Location = new System.Drawing.Point(87, 72);
-            this.V_S_Threshold.Maximum = new decimal(new int[] {
-            100000,
+            this.groupBox2.Controls.Add(this.T_CuttingSecond);
+            this.groupBox2.Controls.Add(this.T_CuttingMinutes);
+            this.groupBox2.Controls.Add(this.T_CuttingHour);
+            this.groupBox2.Controls.Add(this.label23);
+            this.groupBox2.Controls.Add(this.label22);
+            this.groupBox2.Controls.Add(this.T_DirectoryOpen);
+            this.groupBox2.Controls.Add(this.label20);
+            this.groupBox2.Controls.Add(this.label21);
+            this.groupBox2.Controls.Add(this.T_InputDirectoryPath);
+            this.groupBox2.Location = new System.Drawing.Point(6, 6);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(600, 75);
+            this.groupBox2.TabIndex = 13;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Input";
+            // 
+            // T_DirectoryOpen
+            // 
+            this.T_DirectoryOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.T_DirectoryOpen.Location = new System.Drawing.Point(552, 18);
+            this.T_DirectoryOpen.Name = "T_DirectoryOpen";
+            this.T_DirectoryOpen.Size = new System.Drawing.Size(42, 23);
+            this.T_DirectoryOpen.TabIndex = 10;
+            this.T_DirectoryOpen.Text = "Open";
+            this.T_DirectoryOpen.UseVisualStyleBackColor = true;
+            this.T_DirectoryOpen.Click += new System.EventHandler(this.T_DirectoryOpen_Click);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(6, 23);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(75, 12);
+            this.label21.TabIndex = 9;
+            this.label21.Text = "DirectoryPath";
+            // 
+            // T_InputDirectoryPath
+            // 
+            this.T_InputDirectoryPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.T_InputDirectoryPath.Location = new System.Drawing.Point(87, 20);
+            this.T_InputDirectoryPath.Name = "T_InputDirectoryPath";
+            this.T_InputDirectoryPath.Size = new System.Drawing.Size(459, 19);
+            this.T_InputDirectoryPath.TabIndex = 7;
+            this.T_InputDirectoryPath.TextChanged += new System.EventHandler(this.T_InputDirectoryPath_TextChanged);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(6, 49);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(71, 12);
+            this.label20.TabIndex = 9;
+            this.label20.Text = "Cutting Time";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.T_OutputDirectorySave);
+            this.groupBox3.Controls.Add(this.label19);
+            this.groupBox3.Controls.Add(this.T_OverWrite);
+            this.groupBox3.Controls.Add(this.T_OutputDirectoryPath);
+            this.groupBox3.Location = new System.Drawing.Point(6, 87);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(600, 71);
+            this.groupBox3.TabIndex = 14;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Output";
+            // 
+            // T_OutputDirectorySave
+            // 
+            this.T_OutputDirectorySave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.T_OutputDirectorySave.Location = new System.Drawing.Point(552, 38);
+            this.T_OutputDirectorySave.Name = "T_OutputDirectorySave";
+            this.T_OutputDirectorySave.Size = new System.Drawing.Size(42, 23);
+            this.T_OutputDirectorySave.TabIndex = 10;
+            this.T_OutputDirectorySave.Text = "Save";
+            this.T_OutputDirectorySave.UseVisualStyleBackColor = true;
+            this.T_OutputDirectorySave.Click += new System.EventHandler(this.T_OutputDirectorySave_Click);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(4, 43);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(86, 12);
+            this.label19.TabIndex = 9;
+            this.label19.Text = "OutputDirectory";
+            // 
+            // T_OverWrite
+            // 
+            this.T_OverWrite.AutoSize = true;
+            this.T_OverWrite.Location = new System.Drawing.Point(6, 18);
+            this.T_OverWrite.Name = "T_OverWrite";
+            this.T_OverWrite.Size = new System.Drawing.Size(74, 16);
+            this.T_OverWrite.TabIndex = 11;
+            this.T_OverWrite.Text = "OverWrite";
+            this.T_OverWrite.UseVisualStyleBackColor = true;
+            this.T_OverWrite.CheckedChanged += new System.EventHandler(this.T_OverWrite_CheckedChanged);
+            // 
+            // T_OutputDirectoryPath
+            // 
+            this.T_OutputDirectoryPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.T_OutputDirectoryPath.Location = new System.Drawing.Point(96, 40);
+            this.T_OutputDirectoryPath.Name = "T_OutputDirectoryPath";
+            this.T_OutputDirectoryPath.Size = new System.Drawing.Size(450, 19);
+            this.T_OutputDirectoryPath.TabIndex = 7;
+            // 
+            // T_CuttingHour
+            // 
+            this.T_CuttingHour.Location = new System.Drawing.Point(87, 47);
+            this.T_CuttingHour.Maximum = new decimal(new int[] {
+            24,
             0,
             0,
             0});
-            this.V_S_Threshold.Name = "V_S_Threshold";
-            this.V_S_Threshold.Size = new System.Drawing.Size(507, 19);
-            this.V_S_Threshold.TabIndex = 11;
-            this.V_S_Threshold.Value = new decimal(new int[] {
-            30,
+            this.T_CuttingHour.Name = "T_CuttingHour";
+            this.T_CuttingHour.Size = new System.Drawing.Size(39, 19);
+            this.T_CuttingHour.TabIndex = 15;
+            this.T_CuttingHour.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // T_CuttingMinutes
+            // 
+            this.T_CuttingMinutes.Location = new System.Drawing.Point(145, 47);
+            this.T_CuttingMinutes.Maximum = new decimal(new int[] {
+            59,
             0,
             0,
             0});
+            this.T_CuttingMinutes.Name = "T_CuttingMinutes";
+            this.T_CuttingMinutes.Size = new System.Drawing.Size(39, 19);
+            this.T_CuttingMinutes.TabIndex = 15;
+            this.T_CuttingMinutes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(132, 49);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(7, 12);
+            this.label22.TabIndex = 9;
+            this.label22.Text = ":";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(190, 49);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(7, 12);
+            this.label23.TabIndex = 9;
+            this.label23.Text = ":";
+            // 
+            // T_CuttingSecond
+            // 
+            this.T_CuttingSecond.Location = new System.Drawing.Point(203, 47);
+            this.T_CuttingSecond.Maximum = new decimal(new int[] {
+            59,
+            0,
+            0,
+            0});
+            this.T_CuttingSecond.Name = "T_CuttingSecond";
+            this.T_CuttingSecond.Size = new System.Drawing.Size(39, 19);
+            this.T_CuttingSecond.TabIndex = 15;
+            this.T_CuttingSecond.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Form1
             // 
@@ -969,13 +1171,21 @@
             this.groupBox9.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.V_S_Threshold)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.V_C_Threshold)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.V_S_Threshold)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.T_CuttingHour)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.T_CuttingMinutes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.T_CuttingSecond)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1054,6 +1264,22 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.NumericUpDown V_S_Threshold;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button T_OutputDirectorySave;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.CheckBox T_OverWrite;
+        private System.Windows.Forms.TextBox T_OutputDirectoryPath;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button T_DirectoryOpen;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox T_InputDirectoryPath;
+        private System.Windows.Forms.NumericUpDown T_CuttingMinutes;
+        private System.Windows.Forms.NumericUpDown T_CuttingHour;
+        private System.Windows.Forms.NumericUpDown T_CuttingSecond;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
     }
 }
 
