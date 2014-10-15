@@ -288,6 +288,17 @@ namespace PVDataProcessor
                 case 4:
                     Processing.TimeCutter(T_InputDirectoryPath.Text, T_OutputDirectoryPath.Text, new TimeSpan((int)T_CuttingHour.Value, (int)T_CuttingMinutes.Value, (int)T_CuttingSecond.Value));
                     break;
+                case 5:
+                    {
+                        Processing.DateAResult<double[]> i = Processing.TempCalc(Tm_InputDirectoryPath.Text);
+                        Tm_OutputResult1.Text = (i.Result[0] > 0 ? i.Result[0].ToString() : "ERROR");
+                        Tm_OutputResult2.Text = (i.Result[1] > 0 ? i.Result[1].ToString() : "ERROR");
+                        Tm_OutputResult3.Text = (i.Result[2] > 0 ? i.Result[2].ToString() : "ERROR");
+                        Tm_ProcessYear.Text = i.Date.Year.ToString();
+                        Tm_ProcessMonth.Text = i.Date.Month.ToString();
+                        Tm_ProcessDay.Text = i.Date.Day.ToString();
+                    }
+                    break;
                 default:
                     break;
             }
@@ -336,5 +347,16 @@ namespace PVDataProcessor
             }
         }
 
+        private void Tm_InputDirectoryOpen_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            fbd.Description = "Select input directory";
+            fbd.RootFolder = Environment.SpecialFolder.Desktop;
+            fbd.ShowNewFolderButton = true;
+            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                Tm_InputDirectoryPath.Text = fbd.SelectedPath;
+            }
+        }
     }
 }

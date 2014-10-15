@@ -99,23 +99,45 @@
             this.C_DirectoryOpen = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.C_DirectoryPath = new System.Windows.Forms.TextBox();
-            this.Process = new System.Windows.Forms.Button();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.T_DirectoryOpen = new System.Windows.Forms.Button();
-            this.label21 = new System.Windows.Forms.Label();
-            this.T_InputDirectoryPath = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.T_OutputDirectorySave = new System.Windows.Forms.Button();
             this.label19 = new System.Windows.Forms.Label();
             this.T_OverWrite = new System.Windows.Forms.CheckBox();
             this.T_OutputDirectoryPath = new System.Windows.Forms.TextBox();
-            this.T_CuttingHour = new System.Windows.Forms.NumericUpDown();
-            this.T_CuttingMinutes = new System.Windows.Forms.NumericUpDown();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.T_CuttingSecond = new System.Windows.Forms.NumericUpDown();
+            this.T_CuttingMinutes = new System.Windows.Forms.NumericUpDown();
+            this.T_CuttingHour = new System.Windows.Forms.NumericUpDown();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.T_DirectoryOpen = new System.Windows.Forms.Button();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.T_InputDirectoryPath = new System.Windows.Forms.TextBox();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.Tm_ProcessDay = new System.Windows.Forms.TextBox();
+            this.Tm_ProcessMonth = new System.Windows.Forms.TextBox();
+            this.Tm_ProcessYear = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.Tm_OutputResult3 = new System.Windows.Forms.TextBox();
+            this.Tm_OutputResult2 = new System.Windows.Forms.TextBox();
+            this.Tm_OutputResult1 = new System.Windows.Forms.TextBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.Tm_InputDirectoryOpen = new System.Windows.Forms.Button();
+            this.label27 = new System.Windows.Forms.Label();
+            this.Tm_InputDirectoryPath = new System.Windows.Forms.TextBox();
+            this.Process = new System.Windows.Forms.Button();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -135,11 +157,14 @@
             this.groupBox7.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.tabPage5.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.T_CuttingHour)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.T_CuttingMinutes)).BeginInit();
+            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.T_CuttingSecond)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.T_CuttingMinutes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.T_CuttingHour)).BeginInit();
+            this.tabPage6.SuspendLayout();
+            this.groupBox11.SuspendLayout();
+            this.groupBox10.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -152,6 +177,7 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -948,18 +974,6 @@
             this.C_DirectoryPath.TabIndex = 12;
             this.C_DirectoryPath.TextChanged += new System.EventHandler(this.C_DirectoryPath_TextChanged);
             // 
-            // Process
-            // 
-            this.Process.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.Process.Location = new System.Drawing.Point(12, 454);
-            this.Process.Name = "Process";
-            this.Process.Size = new System.Drawing.Size(620, 23);
-            this.Process.TabIndex = 4;
-            this.Process.Text = "Processing!!";
-            this.Process.UseVisualStyleBackColor = true;
-            this.Process.Click += new System.EventHandler(this.Process_Click);
-            // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.groupBox3);
@@ -971,63 +985,6 @@
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "TimeCutter";
             this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.T_CuttingSecond);
-            this.groupBox2.Controls.Add(this.T_CuttingMinutes);
-            this.groupBox2.Controls.Add(this.T_CuttingHour);
-            this.groupBox2.Controls.Add(this.label23);
-            this.groupBox2.Controls.Add(this.label22);
-            this.groupBox2.Controls.Add(this.T_DirectoryOpen);
-            this.groupBox2.Controls.Add(this.label20);
-            this.groupBox2.Controls.Add(this.label21);
-            this.groupBox2.Controls.Add(this.T_InputDirectoryPath);
-            this.groupBox2.Location = new System.Drawing.Point(6, 6);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(600, 75);
-            this.groupBox2.TabIndex = 13;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Input";
-            // 
-            // T_DirectoryOpen
-            // 
-            this.T_DirectoryOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.T_DirectoryOpen.Location = new System.Drawing.Point(552, 18);
-            this.T_DirectoryOpen.Name = "T_DirectoryOpen";
-            this.T_DirectoryOpen.Size = new System.Drawing.Size(42, 23);
-            this.T_DirectoryOpen.TabIndex = 10;
-            this.T_DirectoryOpen.Text = "Open";
-            this.T_DirectoryOpen.UseVisualStyleBackColor = true;
-            this.T_DirectoryOpen.Click += new System.EventHandler(this.T_DirectoryOpen_Click);
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(6, 23);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(75, 12);
-            this.label21.TabIndex = 9;
-            this.label21.Text = "DirectoryPath";
-            // 
-            // T_InputDirectoryPath
-            // 
-            this.T_InputDirectoryPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.T_InputDirectoryPath.Location = new System.Drawing.Point(87, 20);
-            this.T_InputDirectoryPath.Name = "T_InputDirectoryPath";
-            this.T_InputDirectoryPath.Size = new System.Drawing.Size(459, 19);
-            this.T_InputDirectoryPath.TabIndex = 7;
-            this.T_InputDirectoryPath.TextChanged += new System.EventHandler(this.T_InputDirectoryPath_TextChanged);
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(6, 49);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(71, 12);
-            this.label20.TabIndex = 9;
-            this.label20.Text = "Cutting Time";
             // 
             // groupBox3
             // 
@@ -1082,18 +1039,36 @@
             this.T_OutputDirectoryPath.Size = new System.Drawing.Size(450, 19);
             this.T_OutputDirectoryPath.TabIndex = 7;
             // 
-            // T_CuttingHour
+            // groupBox2
             // 
-            this.T_CuttingHour.Location = new System.Drawing.Point(87, 47);
-            this.T_CuttingHour.Maximum = new decimal(new int[] {
-            24,
+            this.groupBox2.Controls.Add(this.T_CuttingSecond);
+            this.groupBox2.Controls.Add(this.T_CuttingMinutes);
+            this.groupBox2.Controls.Add(this.T_CuttingHour);
+            this.groupBox2.Controls.Add(this.label23);
+            this.groupBox2.Controls.Add(this.label22);
+            this.groupBox2.Controls.Add(this.T_DirectoryOpen);
+            this.groupBox2.Controls.Add(this.label20);
+            this.groupBox2.Controls.Add(this.label21);
+            this.groupBox2.Controls.Add(this.T_InputDirectoryPath);
+            this.groupBox2.Location = new System.Drawing.Point(6, 6);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(600, 75);
+            this.groupBox2.TabIndex = 13;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Input";
+            // 
+            // T_CuttingSecond
+            // 
+            this.T_CuttingSecond.Location = new System.Drawing.Point(203, 47);
+            this.T_CuttingSecond.Maximum = new decimal(new int[] {
+            59,
             0,
             0,
             0});
-            this.T_CuttingHour.Name = "T_CuttingHour";
-            this.T_CuttingHour.Size = new System.Drawing.Size(39, 19);
-            this.T_CuttingHour.TabIndex = 15;
-            this.T_CuttingHour.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.T_CuttingSecond.Name = "T_CuttingSecond";
+            this.T_CuttingSecond.Size = new System.Drawing.Size(39, 19);
+            this.T_CuttingSecond.TabIndex = 15;
+            this.T_CuttingSecond.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // T_CuttingMinutes
             // 
@@ -1108,14 +1083,18 @@
             this.T_CuttingMinutes.TabIndex = 15;
             this.T_CuttingMinutes.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // label22
+            // T_CuttingHour
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(132, 49);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(7, 12);
-            this.label22.TabIndex = 9;
-            this.label22.Text = ":";
+            this.T_CuttingHour.Location = new System.Drawing.Point(87, 47);
+            this.T_CuttingHour.Maximum = new decimal(new int[] {
+            24,
+            0,
+            0,
+            0});
+            this.T_CuttingHour.Name = "T_CuttingHour";
+            this.T_CuttingHour.Size = new System.Drawing.Size(39, 19);
+            this.T_CuttingHour.TabIndex = 15;
+            this.T_CuttingHour.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label23
             // 
@@ -1126,18 +1105,290 @@
             this.label23.TabIndex = 9;
             this.label23.Text = ":";
             // 
-            // T_CuttingSecond
+            // label22
             // 
-            this.T_CuttingSecond.Location = new System.Drawing.Point(203, 47);
-            this.T_CuttingSecond.Maximum = new decimal(new int[] {
-            59,
-            0,
-            0,
-            0});
-            this.T_CuttingSecond.Name = "T_CuttingSecond";
-            this.T_CuttingSecond.Size = new System.Drawing.Size(39, 19);
-            this.T_CuttingSecond.TabIndex = 15;
-            this.T_CuttingSecond.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(132, 49);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(7, 12);
+            this.label22.TabIndex = 9;
+            this.label22.Text = ":";
+            // 
+            // T_DirectoryOpen
+            // 
+            this.T_DirectoryOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.T_DirectoryOpen.Location = new System.Drawing.Point(552, 18);
+            this.T_DirectoryOpen.Name = "T_DirectoryOpen";
+            this.T_DirectoryOpen.Size = new System.Drawing.Size(42, 23);
+            this.T_DirectoryOpen.TabIndex = 10;
+            this.T_DirectoryOpen.Text = "Open";
+            this.T_DirectoryOpen.UseVisualStyleBackColor = true;
+            this.T_DirectoryOpen.Click += new System.EventHandler(this.T_DirectoryOpen_Click);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(6, 49);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(71, 12);
+            this.label20.TabIndex = 9;
+            this.label20.Text = "Cutting Time";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(6, 23);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(75, 12);
+            this.label21.TabIndex = 9;
+            this.label21.Text = "DirectoryPath";
+            // 
+            // T_InputDirectoryPath
+            // 
+            this.T_InputDirectoryPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.T_InputDirectoryPath.Location = new System.Drawing.Point(87, 20);
+            this.T_InputDirectoryPath.Name = "T_InputDirectoryPath";
+            this.T_InputDirectoryPath.Size = new System.Drawing.Size(459, 19);
+            this.T_InputDirectoryPath.TabIndex = 7;
+            this.T_InputDirectoryPath.TextChanged += new System.EventHandler(this.T_InputDirectoryPath_TextChanged);
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.groupBox11);
+            this.tabPage6.Controls.Add(this.groupBox10);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(612, 410);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "Insolation";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.label30);
+            this.groupBox11.Controls.Add(this.label31);
+            this.groupBox11.Controls.Add(this.label25);
+            this.groupBox11.Controls.Add(this.label29);
+            this.groupBox11.Controls.Add(this.label28);
+            this.groupBox11.Controls.Add(this.label26);
+            this.groupBox11.Controls.Add(this.Tm_ProcessDay);
+            this.groupBox11.Controls.Add(this.Tm_ProcessMonth);
+            this.groupBox11.Controls.Add(this.Tm_ProcessYear);
+            this.groupBox11.Controls.Add(this.label34);
+            this.groupBox11.Controls.Add(this.label33);
+            this.groupBox11.Controls.Add(this.label32);
+            this.groupBox11.Controls.Add(this.label24);
+            this.groupBox11.Controls.Add(this.Tm_OutputResult3);
+            this.groupBox11.Controls.Add(this.Tm_OutputResult2);
+            this.groupBox11.Controls.Add(this.Tm_OutputResult1);
+            this.groupBox11.Location = new System.Drawing.Point(6, 64);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(600, 220);
+            this.groupBox11.TabIndex = 15;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Output";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(539, 149);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(55, 12);
+            this.label30.TabIndex = 11;
+            this.label30.Text = "[MJ/m^2]";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(539, 39);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(48, 12);
+            this.label31.TabIndex = 11;
+            this.label31.Text = "[W/m^2]";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(539, 95);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(48, 12);
+            this.label25.TabIndex = 11;
+            this.label25.Text = "[W/m^2]";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(312, 189);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(37, 12);
+            this.label29.TabIndex = 11;
+            this.label29.Text = "/ 1 ～";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(191, 189);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(11, 12);
+            this.label28.TabIndex = 11;
+            this.label28.Text = "/";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(11, 189);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(70, 12);
+            this.label26.TabIndex = 11;
+            this.label26.Text = "ProcessDate";
+            // 
+            // Tm_ProcessDay
+            // 
+            this.Tm_ProcessDay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Tm_ProcessDay.Location = new System.Drawing.Point(355, 186);
+            this.Tm_ProcessDay.Name = "Tm_ProcessDay";
+            this.Tm_ProcessDay.Size = new System.Drawing.Size(98, 19);
+            this.Tm_ProcessDay.TabIndex = 7;
+            // 
+            // Tm_ProcessMonth
+            // 
+            this.Tm_ProcessMonth.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Tm_ProcessMonth.Location = new System.Drawing.Point(208, 186);
+            this.Tm_ProcessMonth.Name = "Tm_ProcessMonth";
+            this.Tm_ProcessMonth.Size = new System.Drawing.Size(98, 19);
+            this.Tm_ProcessMonth.TabIndex = 7;
+            // 
+            // Tm_ProcessYear
+            // 
+            this.Tm_ProcessYear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Tm_ProcessYear.Location = new System.Drawing.Point(87, 186);
+            this.Tm_ProcessYear.Name = "Tm_ProcessYear";
+            this.Tm_ProcessYear.Size = new System.Drawing.Size(98, 19);
+            this.Tm_ProcessYear.TabIndex = 7;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(6, 39);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(38, 12);
+            this.label24.TabIndex = 11;
+            this.label24.Text = "Result";
+            // 
+            // Tm_OutputResult3
+            // 
+            this.Tm_OutputResult3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Tm_OutputResult3.Font = new System.Drawing.Font("MS UI Gothic", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Tm_OutputResult3.Location = new System.Drawing.Point(87, 130);
+            this.Tm_OutputResult3.Name = "Tm_OutputResult3";
+            this.Tm_OutputResult3.Size = new System.Drawing.Size(446, 50);
+            this.Tm_OutputResult3.TabIndex = 7;
+            // 
+            // Tm_OutputResult2
+            // 
+            this.Tm_OutputResult2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Tm_OutputResult2.Font = new System.Drawing.Font("MS UI Gothic", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Tm_OutputResult2.Location = new System.Drawing.Point(87, 74);
+            this.Tm_OutputResult2.Name = "Tm_OutputResult2";
+            this.Tm_OutputResult2.Size = new System.Drawing.Size(446, 50);
+            this.Tm_OutputResult2.TabIndex = 7;
+            // 
+            // Tm_OutputResult1
+            // 
+            this.Tm_OutputResult1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Tm_OutputResult1.Font = new System.Drawing.Font("MS UI Gothic", 32F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.Tm_OutputResult1.Location = new System.Drawing.Point(87, 18);
+            this.Tm_OutputResult1.Name = "Tm_OutputResult1";
+            this.Tm_OutputResult1.Size = new System.Drawing.Size(446, 50);
+            this.Tm_OutputResult1.TabIndex = 7;
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.Tm_InputDirectoryOpen);
+            this.groupBox10.Controls.Add(this.label27);
+            this.groupBox10.Controls.Add(this.Tm_InputDirectoryPath);
+            this.groupBox10.Location = new System.Drawing.Point(6, 6);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(600, 52);
+            this.groupBox10.TabIndex = 14;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Input";
+            // 
+            // Tm_InputDirectoryOpen
+            // 
+            this.Tm_InputDirectoryOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Tm_InputDirectoryOpen.Location = new System.Drawing.Point(552, 18);
+            this.Tm_InputDirectoryOpen.Name = "Tm_InputDirectoryOpen";
+            this.Tm_InputDirectoryOpen.Size = new System.Drawing.Size(42, 23);
+            this.Tm_InputDirectoryOpen.TabIndex = 10;
+            this.Tm_InputDirectoryOpen.Text = "Open";
+            this.Tm_InputDirectoryOpen.UseVisualStyleBackColor = true;
+            this.Tm_InputDirectoryOpen.Click += new System.EventHandler(this.Tm_InputDirectoryOpen_Click);
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(6, 23);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(75, 12);
+            this.label27.TabIndex = 9;
+            this.label27.Text = "DirectoryPath";
+            // 
+            // Tm_InputDirectoryPath
+            // 
+            this.Tm_InputDirectoryPath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Tm_InputDirectoryPath.Location = new System.Drawing.Point(87, 20);
+            this.Tm_InputDirectoryPath.Name = "Tm_InputDirectoryPath";
+            this.Tm_InputDirectoryPath.Size = new System.Drawing.Size(459, 19);
+            this.Tm_InputDirectoryPath.TabIndex = 7;
+            // 
+            // Process
+            // 
+            this.Process.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Process.Location = new System.Drawing.Point(12, 454);
+            this.Process.Name = "Process";
+            this.Process.Size = new System.Drawing.Size(620, 23);
+            this.Process.TabIndex = 4;
+            this.Process.Text = "Processing!!";
+            this.Process.UseVisualStyleBackColor = true;
+            this.Process.Click += new System.EventHandler(this.Process_Click);
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(54, 39);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(27, 12);
+            this.label32.TabIndex = 11;
+            this.label32.Text = "Sum";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(34, 95);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(47, 12);
+            this.label33.TabIndex = 11;
+            this.label33.Text = "Average";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(34, 149);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(47, 12);
+            this.label34.TabIndex = 11;
+            this.label34.Text = "Average";
             // 
             // Form1
             // 
@@ -1179,13 +1430,18 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.tabPage5.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.T_CuttingHour)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.T_CuttingMinutes)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.T_CuttingSecond)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.T_CuttingMinutes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.T_CuttingHour)).EndInit();
+            this.tabPage6.ResumeLayout(false);
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1280,6 +1536,28 @@
         private System.Windows.Forms.NumericUpDown T_CuttingSecond;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox Tm_ProcessDay;
+        private System.Windows.Forms.TextBox Tm_ProcessMonth;
+        private System.Windows.Forms.TextBox Tm_ProcessYear;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox Tm_OutputResult1;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.Button Tm_InputDirectoryOpen;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.TextBox Tm_InputDirectoryPath;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.TextBox Tm_OutputResult3;
+        private System.Windows.Forms.TextBox Tm_OutputResult2;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label32;
     }
 }
 

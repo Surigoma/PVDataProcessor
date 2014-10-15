@@ -154,6 +154,101 @@ namespace PVDataProcessor.Tool
             }
             return;
         }
+        static public DateAResult<double[]> TempCalc(string Source)
+        {
+            DateAResult<double[]> result = new DateAResult<double[]>();
+            result.Result = new double[3];
+            int MaxYear = 0;
+            int MaxMonth = 0;
+            int MaxDay = 0;
+            int DayCount = 0;
+            double AllSum = 0;
+
+            bool flag = false;
+            if (pp == null)
+            {
+                flag = true;
+                pp = new ProcessPrev();
+                pp.Show();
+                pp.SetTitle("Temp Calc start.");
+            }
+            if (Directory.Exists(Source))
+            {
+                var d = Directory.GetDirectories(Source);
+                var FileCount = Directory.GetFiles(Source, "*.csv",SearchOption.AllDirectories).Length;
+                pp.SetMaxProgress(FileCount);
+                if (flag)
+                    pp.SetMaxAllProgress(FileCount);
+                int lc = 0;
+                foreach (var i in d)
+                {
+                    pp.SetTitle("Folder Load : " + i);
+                    string FolderName = Path.GetFileName(i);
+                    DateTime Dt = DateTime.ParseExact(FolderName, "yy-MM-dd", null);
+                    MaxYear = (MaxYear < Dt.Year ? Dt.Year : MaxYear);
+                    MaxMonth = (MaxMonth < Dt.Month ? Dt.Month : MaxMonth);
+                    MaxDay = (MaxDay < Dt.Day ? Dt.Day : MaxDay);
+                    DayCount++;
+                    pp.SetTitle("Adding Data : " + i);
+                    double DateSum = 0;
+                    var Files = Directory.GetFiles(i,"*.csv");
+                    foreach (var ii in Files)
+                    {
+                        int Counter = 0;
+                        string line = "";
+                        StreamReader sr = new StreamReader(ii);
+                        while ((line = sr.ReadLine()) != null)
+                        {
+                            if (Counter > 6)
+                            {
+                                try
+                                {
+                                    string[] Datas = line.Split(',');
+                                    DateSum += double.Parse(Datas[2]) * 1000000 / 6.94;
+                                }
+                                catch(FormatException)
+                                {
+                                    result.Result[0] = -1;
+                                    result.Result[1] = -1;
+                                    result.Result[2] = -1;
+                                    result.Date = new DateTime(Dt.Year, Dt.Month, Dt.Day);
+                                    if (flag)
+                                    {
+                                        pp.Close();
+                                        pp.Dispose();
+                                        pp = null;
+                                    }
+                                    sr.Close();
+                                    return result;
+                                }
+                            }
+                            Counter++;
+                        }
+                        lc++;
+                        pp.UpdateProgress(lc);
+                        if (flag)
+                            pp.UpdateAllProgress(lc);
+                    }
+                    AllSum += DateSum / 360;
+                }
+                pp.SetTitle("Calc Datas...");
+                result.Result[0] = AllSum;
+                result.Result[1] = AllSum / DayCount;
+                result.Result[2] = (AllSum / DayCount) * 0.0036;
+                result.Date = new DateTime(MaxYear, MaxMonth, MaxDay);
+            }
+            if (flag)
+            {
+                pp.Close();
+                pp.Dispose();
+                pp = null;
+            }
+            if (MaxDay != DayCount)
+            {
+                Console.WriteLine("ERROR : Deffined Date.");
+            }
+            return result;
+        }
 
         static public void ValidDataIndex(string Source, string Output, double CutThreshold, double SunThreshold)
         {
@@ -297,6 +392,11 @@ namespace PVDataProcessor.Tool
             }
             s = s / n;
             return Math.Sqrt(s) >= Threshold;
+        }
+        public struct DateAResult<T>
+        {
+            public T Result;
+            public DateTime Date;
         }
     }
 }
